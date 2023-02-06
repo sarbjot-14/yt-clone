@@ -2,13 +2,14 @@ import Image from 'next/image';
 import React from 'react';
 import MenuIcon from '../application/icons/menu';
 import Microphone from '../application/icons/microphone';
+import Profile from '../application/icons/profile';
 import Search from '../application/icons/search';
 
 const NavBar = () => {
   return (
     <>
-      <div className="w-full h-20 bg-red-100 flex ">
-        <div className="bg-orange-200 flex justify-center items-center">
+      <div className="w-full h-20  flex ">
+        <div className="flex justify-center items-center p-5 gap-5">
           <MenuIcon></MenuIcon>
           <Image
             width="100"
@@ -17,18 +18,21 @@ const NavBar = () => {
             alt="/icons/youtube.svg"
           ></Image>
         </div>
-        <div className="bg-green-200 grow flex justify-center items-center grow ">
-          <div className="hidden  sm:block flex justify-center w-3/5 ">
+        <div className=" grow flex justify-center items-center grow ">
+          <div className="hidden  sm:block flex justify-center w-2/5 ">
             <div className="">
               <input
                 placeholder="Search"
-                className="rounded-l-lg p-3 w-full"
+                className="rounded-l-full p-3 w-full border-2 h-10"
               ></input>
             </div>
           </div>
-          <span className="rounded-r-lg bg-slate-100 p-3 hidden sm:inline">
+          <span className="rounded-r-full bg-slate-100 p-3 hidden sm:inline h-10 px-4 py-2">
             <Search width="6" display="inline"></Search>
           </span>
+          <div className="hidden sm:inline">
+            <Microphone width="6"></Microphone>
+          </div>
 
           <div className=" sm:hidden w-full flex justify-center ">
             {' '}
@@ -36,8 +40,11 @@ const NavBar = () => {
             <Microphone width="6"></Microphone>
           </div>
         </div>
-        <div className="bg-purple-200 flex justify-center items-center">
-          <div className="button bg-white rounded-xl p-2">Sign in</div>
+        <div className=" flex justify-center items-center p-5">
+          <div className="button bg-white rounded-xl p-2 px-3 border-2 flex gap-2">
+            <Profile></Profile>
+            <p className="inline">Sign in</p>
+          </div>
         </div>
       </div>
     </>
