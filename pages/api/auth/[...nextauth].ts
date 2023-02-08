@@ -12,7 +12,7 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ account, profile }: any) {
-      console.log('in callback the email is ', profile.email);
+      console.log('in callback the email is ', profile);
       //   if (account.provider === 'google') {
       //     return profile.email_verified && profile.email.endsWith('@example.com');
       //   }
