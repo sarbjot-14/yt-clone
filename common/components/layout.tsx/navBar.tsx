@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React from 'react';
 import MenuIcon from '../application/icons/menu';
 import Microphone from '../application/icons/microphone';
-import Profile from '../application/icons/profile';
 import Search from '../application/icons/search';
+import ProfileMenu from '../authentication/ProfileMenu';
 
 const NavBar = () => {
   return (
@@ -35,17 +35,11 @@ const NavBar = () => {
           </div>
 
           <div className=" sm:hidden w-full flex justify-center ">
-            {' '}
             <Search width="6" display="hidden"></Search>
             <Microphone width="6"></Microphone>
           </div>
         </div>
-        <div className=" flex justify-center items-center p-5">
-          <div className="button bg-white rounded-xl p-2 px-3 border-2 flex gap-2">
-            <Profile></Profile>
-            <p className="inline">Sign in</p>
-          </div>
-        </div>
+        <ProfileMenu></ProfileMenu>
       </div>
     </>
   );

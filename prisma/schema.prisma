@@ -15,3 +15,15 @@ model User {
   email String  @unique
   name  String?
 }
+
+// model Video{
+//   title
+//   s3key
+//   description
+//   creator
+//   viewCount
+//   likes
+//   dislikes
+//   uploadTime
+
+// }
