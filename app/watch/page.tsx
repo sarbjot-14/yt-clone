@@ -6,7 +6,7 @@ const Watch = () => {
   return (
     <>
       <video width="400" controls>
-        <source src="https://d2t8j8xfjivv1h.cloudfront.net/2905275.mp4"></source>
+        <source src="https://d2t8j8xfjivv1h.cloudfront.net/166046.mp4"></source>
       </video>
     </>
   );

@@ -70,7 +70,9 @@ const page = () => {
                       </button>
                     </div>
 
-                    <VideoUploader></VideoUploader>
+                    <VideoUploader
+                      creatorEmail={session?.user?.email}
+                    ></VideoUploader>
                   </div>
                 </div>
               </div>

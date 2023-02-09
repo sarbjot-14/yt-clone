@@ -1,3 +1,4 @@
+import { dbFindOrCreateUser } from '@/common/db-queries';
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 export const authOptions = {
@@ -16,6 +17,16 @@ export const authOptions = {
       //   if (account.provider === 'google') {
       //     return profile.email_verified && profile.email.endsWith('@example.com');
       //   }
+      try {
+        await dbFindOrCreateUser({
+          email: profile.email,
+          name: profile.name,
+          imageUrl: profile.picture,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
       return true; // Do different verification for other providers that don't have `email_verified`
     },
   },

@@ -11,19 +11,27 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  name     String
+  imageUrl String
+
+  videos Video[]
+
+  liked    Video[] @relation("likes")
+  disLiked Video[] @relation("dislikes")
 }
 
-// model Video{
-//   title
-//   s3key
-//   description
-//   creator
-//   viewCount
-//   likes
-//   dislikes
-//   uploadTime
+model Video {
+  id          Int    @id @default(autoincrement())
+  title       String
+  s3Key       String
+  description String
+  creator     User   @relation(fields: [userId], references: [id])
+  userId      Int
+  viewCount   Int    @default(0)
+  likedBy     User[] @relation("likes")
+  disLiked    User[] @relation("dislikes")
 
-// }
+  createdAt DateTime @default(now()) @map("created_at")
+}

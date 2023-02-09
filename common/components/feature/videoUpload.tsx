@@ -5,8 +5,9 @@ import { ChangeEvent, useState } from 'react';
 import { ClimbingBoxLoader } from 'react-spinners';
 import { setConstantValue } from 'typescript';
 import toast, { Toaster } from 'react-hot-toast';
+import { dbCreateVideo } from '@/common/db-queries';
 
-function VideoUploader() {
+function VideoUploader({ creatorEmail }) {
   const [file, setFile] = useState<File>();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -46,6 +47,28 @@ function VideoUploader() {
         setIsLoading(false);
         setTitle('');
         setDescription('');
+        console.log('result.status', result.status);
+        if (result.status == 200) {
+          console.log('calling create video');
+
+          const res = await fetch('/api/videos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title,
+              description,
+              s3Key: response.data.Key,
+              creatorEmail: creatorEmail,
+            }),
+          });
+
+          // dbCreateVideo({
+          //   title,
+          //   description,
+          //   s3Key: response.data.Key,
+          //   creatorEmail: creatorEmail,
+          // });
+        }
         toast.success('Successfully Uploaded.', {
           duration: 4000,
           position: 'top-center',
@@ -64,7 +87,9 @@ function VideoUploader() {
             secondary: '#fff',
           },
         });
+        console.log('creator email is ', creatorEmail);
       } catch (err) {
+        console.log(err);
         setError('Error when uploading');
         setIsLoading(false);
       }
