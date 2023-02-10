@@ -23,15 +23,15 @@ model User {
 }
 
 model Video {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   s3Key       String
   description String
-  creator     User   @relation(fields: [userId], references: [id])
+  creator     User     @relation(fields: [userId], references: [id])
   userId      Int
-  viewCount   Int    @default(0)
-  likedBy     User[] @relation("likes")
-  disLiked    User[] @relation("dislikes")
-
-  createdAt DateTime @default(now()) @map("created_at")
+  viewCount   Int      @default(0)
+  likedBy     User[]   @relation("likes")
+  disLiked    User[]   @relation("dislikes")
+  thumbnail   String?
+  createdAt   DateTime @default(now()) @map("created_at")
 }

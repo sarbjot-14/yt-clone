@@ -29,7 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "pages/api/users"
+    "pages/api/users",
+    "common/components/layout",
+    "app/watch/[key]"
   ],
   "exclude": ["node_modules"]
 }
