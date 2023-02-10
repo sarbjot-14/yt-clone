@@ -1,6 +1,6 @@
 'use client';
 import VideoUploader from '@/common/components/feature/videoUpload';
-import SideMenu from '@/common/components/layout.tsx/sideMenu';
+import SideMenu from '@/common/components/layout/sideMenu';
 import Image from 'next/image';
 import React, { useState } from 'react';
 

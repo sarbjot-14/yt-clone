@@ -12,6 +12,26 @@ export const dbFindUser = async ({ id }: { id: string }) => {
   });
   return resp;
 };
+export const dbFindVideo = async ({ key }: { key: string }) => {
+  const resp: any = await prisma.video.findFirst({
+    where: {
+      s3Key: {
+        equals: key,
+      },
+    },
+    include: {
+      creator: true,
+      likedBy: true,
+      disLiked: true,
+    },
+  });
+  return resp;
+};
+
+export const dbGetVideos = async () => {
+  const resp: any = await prisma.video.findMany({ include: { creator: true } });
+  return resp;
+};
 export const dbCreateVideo = async (video: {
   title: string;
   s3Key: string;
