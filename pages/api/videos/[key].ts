@@ -9,18 +9,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
-  console.log(
-    'we have made it into the endpoint for views',
-    req.method,
-    req.body,
-  );
   const { key } = req.query as { key: string };
   switch (req.method) {
     case 'POST':
       break;
     case 'GET':
       const resp: any = await dbFindVideo({ key });
-      //console.log('in apij ', resp);
       if (resp != null) {
         res.status(200).send(resp);
       }
@@ -28,7 +22,6 @@ export default async function handler(
       break;
     case 'PUT':
       try {
-        console.log('wheel');
         const resp: any = await dbUpdateViews(req.body);
         if (resp?.status == 500) {
           res.status(500).send(resp);
