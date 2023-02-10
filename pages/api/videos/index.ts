@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { dbCreateVideo, dbGetVideos } from '@/common/db-queries';
+import { dbCreateVideo, dbGetVideos, dbUpdateLikes } from '@/common/db-queries';
 
 type Data = {
   done: boolean;
@@ -37,6 +37,18 @@ export default async function handler(
       }
       break;
     case 'PUT':
+      try {
+        const resp: any = await dbUpdateLikes(req.body);
+        if (resp?.status == 500) {
+          res.status(500).send(resp);
+        } else {
+          res.status(200).send(resp);
+        }
+      } catch (error: any) {
+        console.error(error);
+        res.status(500).end(error.message);
+      }
+
       break;
     case 'DELETE':
       break;

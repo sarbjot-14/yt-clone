@@ -23,7 +23,7 @@ const VideoCard = (card: {
     new Date(card.video.createdAt.split('T')[0]),
   );
 
-  console.log('inside vide ocar ', card, card.video.viewCount);
+  //console.log('inside vide ocar ', card, card.video.viewCount);
   return (
     <>
       <Link href={`/watch/${card.video.s3Key}`}>

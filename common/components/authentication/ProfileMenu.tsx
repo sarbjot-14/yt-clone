@@ -102,7 +102,7 @@ const ProfileMenu = () => {
             className="h-10 w-10 relative"
           >
             <Image
-              src="https://lh3.googleusercontent.com/a/AEdFTp7CVDDdU2HOvKuZaNFJeVZbH4bntSMA36I9GXJMGg=s96-c"
+              src={session.user.image}
               alt="/icons/shorts.svg"
               layout="fill" // required
               objectFit="cover" // change to suit your needs

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { dbFindVideo } from '@/common/db-queries';
+import { dbFindVideo, dbUpdateViews } from '@/common/db-queries';
 
 type Data = {
   name: string;
@@ -9,6 +9,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
+  console.log(
+    'we have made it into the endpoint for views',
+    req.method,
+    req.body,
+  );
   const { key } = req.query as { key: string };
   switch (req.method) {
     case 'POST':
@@ -22,6 +27,18 @@ export default async function handler(
 
       break;
     case 'PUT':
+      try {
+        console.log('wheel');
+        const resp: any = await dbUpdateViews(req.body);
+        if (resp?.status == 500) {
+          res.status(500).send(resp);
+        } else {
+          res.status(200).send(resp);
+        }
+      } catch (error: any) {
+        console.error(error);
+        res.status(500).end(error.message);
+      }
       break;
     case 'DELETE':
       break;
