@@ -23,7 +23,7 @@ const page = () => {
         <div className="flex gap-5 p-5">
           <div className="h-20 w-20 relative">
             <Image
-              src={session?.user?.image}
+              src={session?.user?.image!}
               alt="/icons/shorts.svg"
               layout="fill" // required
               objectFit="cover" // change to suit your needs
