@@ -28,8 +28,6 @@ const VideosDisplay = () => {
     staleTime: 9000,
   });
 
-  console.log('THE VIDEOS ARE ', videos);
-
   if (isLoading) {
     return <span>Loading...</span>;
   }

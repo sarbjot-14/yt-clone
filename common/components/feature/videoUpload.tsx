@@ -7,7 +7,7 @@ import { setConstantValue } from 'typescript';
 import toast, { Toaster } from 'react-hot-toast';
 import { dbCreateVideo } from '@/common/db-queries';
 
-function VideoUploader({ creatorEmail }) {
+function VideoUploader({ creatorEmail }: { creatorEmail: any }) {
   const [file, setFile] = useState<File>();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -29,28 +29,22 @@ function VideoUploader({ creatorEmail }) {
       setError('Please enter a description');
     } else {
       setIsLoading(true);
-      console.log(file);
       // * GET request: presigned URL
       try {
         const response = await axios({
           method: 'GET',
           url: process.env.NEXT_PUBLIC_SIGNED_ENDPOINT,
         });
-        console.log('Response: ', response);
         // * PUT request: upload file to S3
         const result = await fetch(response.data.uploadURL, {
           method: 'PUT',
           body: file,
         });
-        console.log('Result: ', result);
         setError('');
         setIsLoading(false);
         setTitle('');
         setDescription('');
-        console.log('result.status', result.status);
         if (result.status == 200) {
-          console.log('calling create video');
-
           const res = await fetch('/api/videos', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -87,7 +81,6 @@ function VideoUploader({ creatorEmail }) {
             secondary: '#fff',
           },
         });
-        console.log('creator email is ', creatorEmail);
       } catch (err) {
         console.log(err);
         setError('Error when uploading');

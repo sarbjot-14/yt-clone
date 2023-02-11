@@ -30,7 +30,6 @@ export const dbFindVideo = async ({ key }: { key: string }) => {
 };
 
 export const dbUpdateViews = async (videoData: any) => {
-  console.log('updating view count ', videoData);
   const resp: any = await prisma.video.update({
     where: {
       id: videoData.id,
@@ -149,7 +148,6 @@ export const dbFindOrCreateUser = async (newUser: {
   name: string;
   imageUrl: string;
 }) => {
-  console.log('CREATING THIS ONE');
   let existingUser = null;
   // if (newUser?.email == undefined) {
   //   existingUser = null;

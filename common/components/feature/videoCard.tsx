@@ -23,23 +23,32 @@ const VideoCard = (card: {
     new Date(card.video.createdAt.split('T')[0]),
   );
 
-  //console.log('inside vide ocar ', card, card.video.viewCount);
   return (
     <>
       <Link href={`/watch/${card.video.s3Key}`}>
-        <div className="flex flex-col max-w-50 max-h-50 p-2 hover:cursor-pointer">
+        <div className="flex flex-col max-w-50 max-h-50 p-2 hover:cursor-pointer ">
           {/* <div className="h-50 w-50 relative"> */}
+          {card.video.thumbnail ? (
+            <Image
+              src={`/thumbnails/${card.video.thumbnail}`}
+              alt="/thumbnails/default.png"
+              width="290"
+              height="10"
+              objectFit="contain" // change to suit your needs
+              className="rounded-lg"
+            ></Image>
+          ) : (
+            <Image
+              src={`/thumbnails/default.png`}
+              alt="/thumbnails/default.png"
+              width="280"
+              height="10"
+              objectFit="contain" // change to suit your needs
+              className="rounded-lg"
+            ></Image>
+          )}
 
-          <Image
-            src={`/thumbnails/${card.video.thumbnail}`}
-            alt="/icons/youtube.svg"
-            width="280"
-            height="10"
-            objectFit="contain" // change to suit your needs
-            className="rounded-lg"
-          ></Image>
-
-          <div className="flex justify-start gap-3 p-1 py-3">
+          <div className="flex justify-start gap-3 p-1 py-3 ">
             <div className="h-10 w-10 relative">
               <Image
                 src={card.creator.imageUrl!}
@@ -49,8 +58,10 @@ const VideoCard = (card: {
                 className="rounded-full" // just an example
               ></Image>
             </div>
-            <div className="flex flex-col justify-around">
-              <p className="text-md font-semibold pb-1">{card.video.title}</p>
+            <div className="flex flex-col justify-around w-4/5">
+              <p className="text-md font-semibold pb-1 break-words ">
+                {card.video.title}
+              </p>
               <p className="text-xs font-light">{card.creator.name}</p>
               <div className="flex justify-start gap-1">
                 <p className="text-xs font-light">

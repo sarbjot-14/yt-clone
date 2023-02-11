@@ -45,7 +45,6 @@ const getUploadURL = async function (event) {
     // ACL: 'public-read'
   };
 
-  console.log('Params: ', s3Params);
   const uploadURL = await s3.getSignedUrlPromise('putObject', s3Params);
 
   // return JSON.stringify({

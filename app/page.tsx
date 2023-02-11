@@ -17,9 +17,6 @@ const inter = Inter({ subsets: ['latin'] });
 // }
 
 export default async function Home() {
-  console.log('hhheeeeyyyy');
-  // const dataDb = await getData();
-  // console.log('dataDb,', dataDb);
   const data = { id: 1 };
   let isOpen: boolean = true;
   const toggleSideMenu = () => {
