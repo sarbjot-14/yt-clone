@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import Home from '../application/icons/home';
 
@@ -7,11 +8,13 @@ const SideMenu = ({ isOpen }: { isOpen: boolean }) => {
     // <div>overflwo hidden not working</div>
     <div className="h-screen w-full ">
       <div className="  ">
-        <button className="flex justify-start items-center gap-5 p-5 m-3 pr-20 h-5 rounded-lg hover:bg-gray-100 ">
-          <Home></Home>
+        <Link href="/">
+          <button className="flex justify-start items-center gap-5 p-5 m-3 pr-20 h-5 rounded-lg hover:bg-gray-100 ">
+            <Home></Home>
 
-          <h3 className="inline w-500 px-100">Home</h3>
-        </button>
+            <h3 className="inline w-500 px-100">Home</h3>
+          </button>
+        </Link>
         <button className="flex justify-start items-center gap-1 p-5 m-3 pr-20 h-5 rounded-lg hover:bg-gray-100 ">
           <Image
             width="27"

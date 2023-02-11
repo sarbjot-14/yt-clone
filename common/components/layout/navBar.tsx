@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import MenuIcon from '../application/icons/menu';
 import Microphone from '../application/icons/microphone';
@@ -11,12 +12,14 @@ const NavBar = () => {
       <div className="w-full h-20  flex ">
         <div className="flex justify-center items-center p-5 gap-5">
           <MenuIcon></MenuIcon>
-          <Image
-            width="100"
-            height="100"
-            src="/icons/youtube.svg"
-            alt="/icons/youtube.svg"
-          ></Image>
+          <Link href="/">
+            <Image
+              width="100"
+              height="100"
+              src="/icons/youtube.svg"
+              alt="/icons/youtube.svg"
+            ></Image>
+          </Link>
         </div>
         <div className=" grow flex justify-center items-center grow ">
           <div className="hidden  sm:block flex justify-center w-2/5 ">

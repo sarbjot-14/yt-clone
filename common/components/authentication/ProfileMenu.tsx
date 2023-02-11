@@ -14,7 +14,6 @@ import Link from 'next/link';
 
 const ProfileMenu = () => {
   const { data: session } = useSession();
-  console.log(session?.user?.image);
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null,

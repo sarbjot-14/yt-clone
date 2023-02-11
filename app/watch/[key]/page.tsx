@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import toast, { Toaster } from 'react-hot-toast';
+
 import VideoCard from '@/common/components/feature/videoCard';
 import Image from 'next/image';
 import TimeAgo from 'javascript-time-ago';
@@ -30,7 +32,6 @@ const Key = ({ params }: { params: { key: string } }) => {
   };
 
   const response = useQuery(['video', params.key], fetchVideoInfo);
-  console.log('all the video info is right here ', response.data);
   let hasLiked = false;
   let hasDisliked = false;
   if (response.data) {
@@ -75,7 +76,6 @@ const Key = ({ params }: { params: { key: string } }) => {
   });
 
   const fetchUpdateViews = async () => {
-    console.log('we are going to make the call!!!');
     const res = await fetch(`/api/videos/${params.key}`, {
       method: 'PUT',
       headers: {
@@ -97,7 +97,6 @@ const Key = ({ params }: { params: { key: string } }) => {
   });
 
   useEffect(() => {
-    console.log('running useEffect');
     if (response.data) {
       updateViews.mutate();
     }
@@ -106,6 +105,7 @@ const Key = ({ params }: { params: { key: string } }) => {
   return (
     <>
       <div className="flex">
+        <Toaster />
         <div className=" h-screen flex flex-col pt-10 items-center  ">
           <video className="w-5/6" controls muted autoPlay>
             <source
@@ -141,15 +141,28 @@ const Key = ({ params }: { params: { key: string } }) => {
               <div className="flex justify-start gap-3">
                 <div className="flex justify-center">
                   <button
-                    onClick={() =>
-                      updateLikesMutation.mutate({
-                        videoId: response.data?.id,
-                        liked: hasLiked,
-                        disliked: hasDisliked,
-                        action: 'like',
-                        userEmail: session?.user?.email,
-                      })
-                    }
+                    onClick={() => {
+                      if (session?.user) {
+                        console.log('it is loged in ', session?.user);
+                        updateLikesMutation.mutate({
+                          videoId: response.data?.id,
+                          liked: hasLiked,
+                          disliked: hasDisliked,
+                          action: 'like',
+                          userEmail: session?.user?.email,
+                        });
+                      } else {
+                        toast('Must sign in first!', {
+                          duration: 4000,
+                          position: 'top-center',
+
+                          // Styling
+                          style: {
+                            backgroundColor: '#EEEEEE',
+                          },
+                        });
+                      }
+                    }}
                     className="rounded-l-full border-r-1 p-3 bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer "
                   >
                     {hasLiked ? (
@@ -160,15 +173,28 @@ const Key = ({ params }: { params: { key: string } }) => {
                     {response.data?.likedBy.length}
                   </button>
                   <button
-                    onClick={() =>
-                      updateLikesMutation.mutate({
-                        videoId: response.data?.id,
-                        liked: hasLiked,
-                        disliked: hasDisliked,
-                        action: 'dislike',
-                        userEmail: session?.user?.email,
-                      })
-                    }
+                    onClick={() => {
+                      if (session?.user) {
+                        updateLikesMutation.mutate({
+                          videoId: response.data?.id,
+                          liked: hasLiked,
+                          disliked: hasDisliked,
+                          action: 'dislike',
+                          userEmail: session?.user?.email,
+                        });
+                      } else {
+                        console.log('not logged in');
+                        toast('Must sign in first!', {
+                          duration: 4000,
+                          position: 'top-center',
+
+                          // Styling
+                          style: {
+                            backgroundColor: '#EEEEEE',
+                          },
+                        });
+                      }
+                    }}
                     className="rounded-r-full  p-3 bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer"
                   >
                     {hasDisliked ? (

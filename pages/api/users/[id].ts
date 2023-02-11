@@ -15,7 +15,6 @@ export default async function handler(
       break;
     case 'GET':
       const resp: any = await dbFindUser({ id });
-      console.log('in apij ', resp);
       if (resp != null) {
         res.status(200).send(resp);
       }
