@@ -101,7 +101,7 @@ const ProfileMenu = () => {
             className="h-10 w-10 relative"
           >
             <Image
-              src={session.user.image}
+              src={session.user.image!}
               alt="/icons/shorts.svg"
               layout="fill" // required
               objectFit="cover" // change to suit your needs
