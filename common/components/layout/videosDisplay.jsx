@@ -37,7 +37,7 @@ const VideosDisplay = () => {
   }
 
   return (
-    <div className="flex p-2 pt-8 flex-wrap">
+    <div className="flex p-2 pt-8 flex-wrap ">
       {videos.map((video, index) => (
         <VideoCard
           key={index}

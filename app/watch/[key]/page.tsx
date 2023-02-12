@@ -163,7 +163,7 @@ const Key = ({ params }: { params: { key: string } }) => {
                         });
                       }
                     }}
-                    className="rounded-l-full border-r-1 p-3 bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer "
+                    className="rounded-l-full border-r-1 p-1 md:p-3 items-center bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer "
                   >
                     {hasLiked ? (
                       <LikeSolid></LikeSolid>
@@ -195,7 +195,7 @@ const Key = ({ params }: { params: { key: string } }) => {
                         });
                       }
                     }}
-                    className="rounded-r-full  p-3 bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer"
+                    className="rounded-r-full  p-1 md:p-3 items-center bg-neutral-100 text-sm font-semibold flex gap-2 px-4 hover:cursor-pointer"
                   >
                     {hasDisliked ? (
                       <DislikeSolid></DislikeSolid>
@@ -205,25 +205,26 @@ const Key = ({ params }: { params: { key: string } }) => {
                     {response.data?.disLiked.length}
                   </button>
                 </div>
-                <button className="bg-neutral-100 text-sm font-semibold p-2 rounded-full flex items-center gap-2 px-4">
+                <button className="bg-neutral-100  p-2 rounded-full flex items-center gap-2 px-2 md:px-4">
                   <Image
                     width="27"
                     height="30"
                     src="/icons/share.svg"
                     alt="/icons/youtube.svg"
+                    className="w-5 md:w-6"
                   ></Image>
-                  Share
+                  <p className="text-xs md:text-md "> Share</p>
                 </button>
-                <button className="bg-neutral-100 text-sm font-semibold p-2 rounded-full flex items-center gap-2 px-4">
+                <button className="bg-neutral-100  text-sm  p-2 rounded-full flex items-center gap-2 px-2 md:px-4 hidden md:flex">
                   <Image
                     width="27"
                     height="30"
                     src="/icons/download.svg"
                     alt="/icons/youtube.svg"
                   ></Image>
-                  Download
+                  <p className="text-xs md:text-md "> Download</p>
                 </button>
-                <button className="bg-neutral-100 text-sm font-semibold p-2 rounded-full flex items-center gap-3 px-4 font-bold">
+                <button className="bg-neutral-100 hidden md:inline text-sm font-semibold p-2 rounded-full flex items-center gap-3 px-4 font-bold">
                   ...
                 </button>
               </div>

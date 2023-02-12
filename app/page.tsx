@@ -26,7 +26,7 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <div className="w-full flex ">
-        <div className="flex-none w-100 h-screen">
+        <div className="h-screen ">
           <SideMenu isOpen={isOpen}></SideMenu>
         </div>
 

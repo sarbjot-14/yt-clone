@@ -89,7 +89,9 @@ const ProfileMenu = () => {
             src="/icons/create.svg"
             alt="/icons/shorts.svg"
           ></Image>
+
           <Image
+            className="hidden sm:inline"
             width="27"
             height="30"
             src="/icons/notification.svg"
@@ -116,7 +118,7 @@ const ProfileMenu = () => {
         >
           <div className="button bg-white rounded-xl p-2 px-3 border-2 flex gap-2">
             <Profile></Profile>
-            <p className="inline">Sign in</p>
+            <p className=" inline">Sign in</p>
           </div>
         </div>
       )}

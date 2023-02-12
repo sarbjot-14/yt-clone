@@ -21,7 +21,7 @@ const page = () => {
 
       <div className=" flex-1 ">
         <div className="flex gap-5 p-5">
-          <div className="h-20 w-20 relative">
+          <div className="h-10 w-10 md:h-20 md:w-20 relative">
             <Image
               src={session?.user?.image!}
               alt="/icons/shorts.svg"
@@ -31,8 +31,8 @@ const page = () => {
             ></Image>
           </div>
           <div className="flex flex-col content-between h-full">
-            <p className="text-xl">{session?.user?.name}</p>
-            <p className="text-md">{session?.user?.email}</p>
+            <p className="text-lg md:text-xl">{session?.user?.name}</p>
+            <p className="text-sm md:text-md">{session?.user?.email}</p>
           </div>
         </div>
 
@@ -41,8 +41,8 @@ const page = () => {
 
         <div className="flex flex-col justify-center items-center gap-6 mt-20">
           <Camera></Camera>
-          <p className="text-xl">Upload a video to get started</p>
-          <p className="text-sm">
+          <p className="text-md md:text-xl">Upload a video to get started</p>
+          <p className="w-8/10 text-sm md:text-md text-center ">
             Start sharing your story and connecting with viewers. Videos you
             upload will show up here.
           </p>
@@ -79,9 +79,6 @@ const page = () => {
             </>
           ) : null}
         </div>
-
-        {/* <VideoUploader></VideoUploader>
-        <h1 className="bg-blue-700">hahahah okay </h1> */}
       </div>
     </div>
   );
