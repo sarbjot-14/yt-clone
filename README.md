@@ -25,8 +25,8 @@
 ## Functionalities
 * Login with google account
 * Watch video and increase view count
-* like and disklike videos (yes, we have disklike count!)
-* upload videos
+* like and dislike videos (yes, we have dislike count!)
+* upload videos on your channel
 
 
 ## Reflection
