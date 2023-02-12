@@ -1,5 +1,7 @@
 # Youtube Clone App
 
+Youtube Clone created to practice web developement and learn some new concepts
+
 Live link: https://yt-clone-theta.vercel.app/
 
 ## Tech Stack
