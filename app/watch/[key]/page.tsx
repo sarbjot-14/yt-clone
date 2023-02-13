@@ -134,8 +134,8 @@ const Key = ({ params }: { params: { key: string } }) => {
                   <p className="text-md">{response.data?.creator.name}</p>
                   <p className="text-xs font-extralight">100k subscribers</p>
                 </div>
-                <button className="rounded-full bg-slate-900 text-white text-sm px-3 font-semibold">
-                  Subscribe
+                <button className="rounded-full h-10 bg-slate-900 text-white text-sm px-3 font-semibold">
+                  <p className="text-sm">Subscribe</p>
                 </button>
               </div>
               <div className="flex justify-start gap-3">
