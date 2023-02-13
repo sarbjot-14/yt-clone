@@ -116,9 +116,9 @@ const ProfileMenu = () => {
           onClick={() => signIn()}
           className=" flex justify-center items-center p-5"
         >
-          <div className="button bg-white rounded-xl p-2 px-3 border-2 flex gap-2">
+          <div className="button bg-white rounded-xl p-1 px-1 gap-1 md:p-2 md:px-3 border-2 flex gap-2">
             <Profile></Profile>
-            <p className=" inline">Sign in</p>
+            <p className="text-sm md:text-md inline">Sign in</p>
           </div>
         </div>
       )}
