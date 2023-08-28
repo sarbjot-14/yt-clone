@@ -2,7 +2,6 @@
 
 Youtube Clone created to practice web developement and learn some new concepts
 
-Live link: https://yt-clone-theta.vercel.app/
 Demo: https://www.youtube.com/watch?v=fE4FS-_byAE
 
 
